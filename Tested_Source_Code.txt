@@ -1,0 +1,377 @@
+Switch-Case mit Multip-Clips
+
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>    
+        
+    </head>
+
+    <body>
+        
+        <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+            
+            <button id="Btn_Zurueck" style="border: 2px solid #4CAF50; border-radius:10px; color: black; padding: 16px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;">Zurueck</button>
+            <button id="Btn_Weiter" style="border: 2px solid #008CBA; border-radius:10px; color: black; padding: 16px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;">Weiter</button>
+        </div>
+        
+        <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;"> 
+            
+            <a-light type="ambient" intensity="1.5" color="white"></a-light>
+            
+            <a-marker-camera preset="hiro"></a-marker-camera>
+            
+            <a-box id="myBox" color="#FFFFFF" position="0.5 0 0" scale="0.2 0.2 0.2"></a-box>
+            
+            <a-gltf-model
+                id="myFrieder"
+                position="0 0 0"
+                scale="0.2 0.2 0.2"
+                src="demo/Frieder_Animation_Demo.gltf"
+                animation-mixer="clip: Welcome; timeScale: 0; loop: once;"                
+            ></a-gltf-model>
+            
+            <a-gltf-model
+                id="myCowboy"
+                position="0.3 0 0"
+                scale="0.2 0.2 0.2"
+                src="demo/Cowboy_Animation_Demo.gltf"
+                animation-mixer="clip: Shoot_Pistol; timeScale: 0"
+            ></a-gltf-model>
+            
+        </a-scene>
+        
+        <script>
+            var v_Button_Zurueck = document.getElementById('Btn_Zurueck');
+            var v_Button_Weiter = document.getElementById('Btn_Weiter');
+            const myCowboy = document.querySelector('#myCowboy');
+            var v_myFrieder = document.getElementById('myFrieder');
+            //var display = document.getElementById('count');
+            var v_myBox = document.getElementById('myBox');
+            var count = 0;
+            v_Button_Zurueck.addEventListener('click', function() {
+              count--
+              
+              switch(count){
+                case 0:
+                    v_myFrieder.setAttribute("animation-mixer", "clip: Welcome");
+                    v_myBox.setAttribute("color", "#FF0000");
+                    break;
+                case 1:
+                    v_myFrieder.setAttribute("animation-mixer", "clip: Introduction");
+                    v_myBox.setAttribute("color", "#00FF00");
+                    break;
+                case 2:
+                    v_myFrieder.setAttribute("animation-mixer", "clip: Show_Left");
+                    v_myBox.setAttribute("color", "#0000FF");
+                    break;
+              }
+                
+            });
+            v_Button_Weiter.addEventListener('click', function() {
+              count++
+                
+              switch(count){
+                case 1:
+                    v_myBox.setAttribute("color", "#FF0000");
+                    v_myFrieder.setAttribute("animation-mixer", {timeScale: 1});
+                    break;
+                case 2:
+                    v_myBox.setAttribute("color", "#00FF00");
+                    v_myFrieder.setAttribute("animation-mixer", "clip: Introduction");
+                    break;
+                case 3:
+                    v_myBox.setAttribute("color", "#0000FF");
+                    myCowboy.setAttribute("animation-mixer", {timeScale: 1});
+                    v_myFrieder.setAttribute("animation-mixer", "clip: Show_Left");
+                    break;
+              }
+            });
+                         
+        </script>
+        
+    </body>
+</html>
+
+
+
+Button mit Switch-Case
+
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>    
+        
+    </head>
+
+    <body>
+        
+        <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+            
+            <!--<p id="count">0</p>-->
+            <button id="Btn_Zurueck" style="">Zurueck</button>
+            <button id="Btn_Weiter">Weiter</button>
+        </div>
+        
+        <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">      
+            <a-marker-camera preset="hiro"></a-marker-camera>
+            
+            <a-box id="myBox" color="#FFFFFF" position="0 0 0" scale="0.2 0.2 0.2"></a-box>
+            
+        </a-scene>
+        
+        <script>
+            var v_Button_Zurueck = document.getElementById('Btn_Zurueck');
+            var v_Button_Weiter = document.getElementById('Btn_Weiter');
+            //var display = document.getElementById('count');
+            var v_myBox = document.getElementById('myBox');
+            var count = 0;
+            v_Button_Zurueck.addEventListener('click', function() {
+              count--
+              //display.innerHTML = count;
+              
+              switch(count){
+                case 0:
+                    v_myBox.setAttribute("color", "#FF0000");
+                    break;
+                case 1:
+                    v_myBox.setAttribute("color", "#00FF00");
+                    break;
+                case 2:
+                    v_myBox.setAttribute("color", "#0000FF");
+                    break;
+              }
+                
+            });
+            v_Button_Weiter.addEventListener('click', function() {
+              count++
+              //display.innerHTML = count;
+                
+              switch(count){
+                case 0:
+                    v_myBox.setAttribute("color", "#FF0000");
+                    break;
+                case 1:
+                    v_myBox.setAttribute("color", "#00FF00");
+                    break;
+                case 2:
+                    v_myBox.setAttribute("color", "#0000FF");
+                    break;
+              }
+            });
+                  
+        
+            
+            
+        </script>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+Button Animation-Mixer Start
+
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+    </head>
+
+    <body>           
+        <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+            <button id="myButton">
+                COLOR OBJECTS
+            </button>
+        </div>
+        
+        <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">      
+            <a-marker-camera preset="hiro"></a-marker-camera>
+            
+            <a-box id="myBox" color="#EF2D5E" position="0 0 0" scale="0.2 0.2 0.2"></a-box>
+            
+            <a-gltf-model
+                id="myCowboy"
+                position="0 0.3 0"
+                scale="0.2 0.2 0.2"
+                src="gltf/Cowboy_Scene.gltf"
+                animation-mixer="clip: Shoot_Pistol; timeScale: 0"
+            ></a-gltf-model>
+        </a-scene>
+        
+             
+        <script>
+            const myButton = document.querySelector('#myButton');
+            const myBox = document.querySelector('#myBox');
+            const myCowboy = document.querySelector('#myCowboy');
+            
+            
+            myButton.addEventListener('click', () => {                
+                myBox.setAttribute("color", "#4CC3D9");
+                myCowboy.setAttribute("animation-mixer", {timeScale: 1});
+            });
+        </script>
+        
+    </body>
+</html>
+
+
+
+Desert Scene (Unsynchronized - TimeScale: 0)
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+  </head>
+  <body>
+    <a-scene embedded arjs="sourceType: webcam;">
+      <a-marker-camera preset="hiro">      
+        <!--
+        <a-gltf-model 
+            position="0 0 0"
+            scale="0.2 0.2 0.2"
+            src="cowboy_animation.gltf"
+            animation-mixer="clip: Walk_polish"
+        ></a-gltf-model>
+        <a-gltf-model 
+            position="0.5 0 0"
+            scale="0.2 0.2 0.2"
+            src="Frida.gltf"
+        ></a-gltf-model>
+        
+        <a-gltf-model 
+            position="0 0 0"
+            scale="0.2 0.2 0.2"
+            src="Frieder_Animation_Low_Poly.gltf"
+            animation-mixer="clip: Welcome"
+        ></a-gltf-model>
+        
+        <a-gui-label
+            width="1"
+            height="0.4"
+            value="Herzlich Willkommen"
+            font-family="fonts/PermanentMarker-Regular.ttf"
+            font-size="0.1"
+            position="0 1 0"
+            background-color="#9DB2BF"
+            font-color="#27374D"
+            line-height="0.8"
+        ></a-gui-label>
+        -->
+          
+        <a-gltf-model 
+            position="0 0 0"
+            scale="0.2 0.2 0.2"
+            src="gltf/Cowboy_Scene.gltf"
+            animation-mixer="clip: Shoot_Pistol; timeScale: 0"
+        ></a-gltf-model>
+        
+        <a-gltf-model 
+            position="0 0 0"
+            scale="0.2 0.2 0.2"
+            src="gltf/Frieder_Scene.gltf"
+            animation-mixer="clip: Show_Left; timeScale: 0"
+        ></a-gltf-model>
+        
+        <a-gltf-model 
+            position="0 0 0"
+            scale="0.2 0.2 0.2"
+            src="gltf/Landscape_Scene.gltf"
+        ></a-gltf-model>
+        
+      </a-marker-camera>      
+    </a-scene>
+  </body>
+</html>
+
+
+Frieder_AR Code [alt]
+
+<html>  
+    <head>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+        <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+        
+        <script>
+            AFRAME.registerComponent('color-on-click', function () {
+                schema: {
+                    color: {default: 'blue'}
+                },
+
+                init: function () {
+                    var el = this.el;  // Reference to the entity.
+                    var data = this.data;  // Data passed in through HTML, defined in schema.
+
+                    el.addEventListener('click', function () {
+                        el.setAttribute('color', data.color);
+                    });
+                }
+            });
+        </script>
+          
+        <style>
+            .arjs-loader {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 9999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .arjs-loader div {
+                text-align: center;
+                font-size: 1.25em;
+                color: white;
+            }
+        </style>
+               
+        <div style="position: fixed, top:10px; width: 100%; text-align: center; z-index: 1;">
+            <button>Start</button>
+        </div>
+        
+    </head>
+    
+    <body>
+        <a-scene
+            embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+            <a-marker-camera preset="hiro">
+                
+            </a-marker-camera>
+            
+            <a-gltf-model
+                id="Cowboy"
+                position="0 0 -5"
+                scale="0.4 0.4 0.4"
+                src="gltf/Cowboy_Scene.gltf"
+                animation-mixer="clip: Shoot_Pistol; timeScale: 1"
+            ></a-gltf-model>
+            
+        </a-scene>
+    </body>
+</html>
+
