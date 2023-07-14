@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+        <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>        
+    </head>
+
+    <body>
+        
+        <div style='position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;'>
+            
+            <button id="Btn_Zurueck" style="border: 2px solid #4CAF50; border-radius:10px; color: black; padding: 16px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;">Zurueck</button>
+            
+            <a href="../index.html">
+                <button id="Btn_Frontpage" style="border: 2px solid #FF0000; border-radius:10px; color: black; padding: 16px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;">Hauptseite</button>
+            </a>
+            
+            <button id="Btn_Weiter" style="border: 2px solid #008CBA; border-radius:10px; color: black; padding: 16px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;">Weiter</button>
+            
+        </div>
+        
+        <a-scene embedded arjs="trackingMethod: best"> 
+            
+            <a-light type="ambient" intensity="1.5" color="white"></a-light>
+            
+            <a-marker-camera preset="hiro"></a-marker-camera>
+            
+            <a-gltf-model
+                id="myFrieder"
+                position="0 0 0"
+                scale="0.2 0.2 0.2"
+                src="../gltf/Frieder_Demo.gltf"
+                animation-mixer="clip: Sit_NULL; loop: once;"                
+            ></a-gltf-model>
+            
+            <a-box
+                id="myTextBox"
+                position="0 1.1 0"
+                scale="1.1 0.3 0.05"
+                color="#000035"
+                visible="false"
+            ></a-box>
+            
+            <a-entity
+                id="myText"
+                text="value: Willkommen im Waffenmuseum Suhl; align: center"
+                lineHeight="0.8"
+                position="0 1.1 0.05"
+                width="0.2"
+                height="1"
+                visible="false"
+            ></a-entity>
+            
+        </a-scene>
+        
+        <script>
+            var v_Button_Zurueck = document.getElementById('Btn_Zurueck');
+            var v_Button_Weiter = document.getElementById('Btn_Weiter');
+            var v_myTextBox = document.getElementById('myTextBox');
+            var v_myText = document.getElementById('myText');
+            
+            var v_myFrieder = document.getElementById('myFrieder');
+            
+            var count = 0;
+            var count_max = 2;
+            
+            // Stoppt die Animation mit dem letzten Frame um Sitz-Pose beizubehalten
+            v_myFrieder.setAttribute("animation-mixer", "clampWhenFinished: True"); 
+            
+            
+            v_Button_Zurueck.addEventListener('click', function() {
+                count--
+                
+                if(count == 0){
+                    count = 1;
+                }
+                
+                //display.innerHTML = count;
+                switch(count){
+                    
+                    case 1:
+                        // Frieder
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Sit_Welcome");
+                        v_myText.setAttribute("visible", true);
+                        v_myText.setAttribute("text", "value: Bsp. Text Fuchs 1");
+                        v_myTextBox.setAttribute("visible", true);                
+                        break;
+                        
+                    case 2:
+                        // Frieder
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Sit_Show_Right");
+                        v_myText.setAttribute("text", "Bsp. Text Fuchs 2"); 
+                        break;
+                        
+                }    
+            });
+            
+            
+            v_Button_Weiter.addEventListener('click', function() {
+                count++
+                
+                if(count == count_max + 1){
+                    count = count_max;
+                }
+                
+                //display.innerHTML = count;
+                switch(count){
+                        
+                    case 1:
+                        // Frieder
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Sit_Welcome");
+                        v_myText.setAttribute("visible", true);
+                        v_myText.setAttribute("text", "value: Bsp. Text Fuchs 1");
+                        v_myTextBox.setAttribute("visible", true);                
+                        break;
+                        
+                    case 2:
+                        // Frieder
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Sit_Show_Right");
+                        v_myText.setAttribute("text", "Bsp. Text Fuchs 2"); 
+                        break;
+                        
+                }
+            });
+
+                         
+        </script>
+        
+    </body>
+</html>
