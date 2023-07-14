@@ -23,7 +23,7 @@
             
         </div>
         
-        <a-scene embedded arjs="trackingMethod: best" renderer="antialias: false; alpha: true; logarithmicDepthBuffer: true; colorManagement: true;"> 
+        <a-scene embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;"> 
             
             <a-light type="ambient" intensity="1.5" color="white"></a-light>
             
@@ -59,7 +59,7 @@
         
         <script>
             
-            // renderer "precision: mediump;" 
+            // renderer "precision: mediump; alpha: true; logarithmicDepthBuffer: true;" 
             
             var v_Button_Zurueck = document.getElementById('Btn_Zurueck');
             var v_Button_Weiter = document.getElementById('Btn_Weiter');
