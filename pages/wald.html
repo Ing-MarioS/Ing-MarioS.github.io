@@ -28,13 +28,21 @@
             <a-light type="ambient" intensity="1.5" color="white"></a-light>
             
             <a-marker-camera preset="hiro"></a-marker-camera>
-            
+            <!--
             <a-gltf-model
                 id="myFrieder"
                 position="0 0 0"
                 scale="0.2 0.2 0.2"
                 src="../gltf/Frieder_Demo.gltf"
                 animation-mixer="clip: NULL; loop: once;"                
+            ></a-gltf-model>
+            -->
+            <a-gltf-model
+                id="myFrieder"
+                position="0 0 0"
+                scale="0.2 0.2 0.2"
+                src="../gltf/cowboy/cowboy_animation.gltf"
+                animation-mixer="clip: Walk_polish; loop: once;"                
             ></a-gltf-model>
             
             <a-box
