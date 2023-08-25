@@ -1,0 +1,166 @@
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+        <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+        <script>screen.orientation.lock('landscape');</script>
+        <meta charset="utf-8">
+        <title>Waffenmuseum Suhl - AR</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+        <link rel="stylesheet" href="style_pages.css">
+        <link rel="manifest" href="manifest.json">
+    </head>
+
+    <body>
+                     
+        <a-scene style='width:100%;' embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
+            
+            <a-light type="ambient" intensity="1.5" color="white"></a-light>
+            
+            <a-marker-camera preset="hiro" zoom="1"></a-marker-camera>
+            
+            <a-gltf-model
+                id="myFrieder"
+                position="0 0 0"
+                scale="0.2 0.2 0.2"
+                src="../gltf/low_res/Frieder_Emb_Low_Res.gltf"
+                animation-mixer="clip: NULL; clampWhenFinished: true; loop: once"                
+            ></a-gltf-model>
+            
+            <a-box
+                id="myTextBox"
+                position="0 1.1 0"
+                scale="1.1 0.3 0.05"
+                color="#000035"
+                visible="false"
+            ></a-box>
+            
+            <a-entity
+                id="myText"
+                text="value: Willkommen im Waffenmuseum Suhl; align: center"
+                lineHeight="0.8"
+                position="0 1.1 0.05"
+                width="0.2"
+                height="1"
+                visible="false"
+            ></a-entity>
+            
+        </a-scene>
+        
+        <div style='position: fixed; bottom: 10px; width: 100%; text-align: center; z-index: 1;'>
+            
+            <button id="Btn_Zurueck" class="btn">&ltcc;</button>
+            
+            <a href="../index.html">
+                <button id="Btn_Frontpage" class="btn">&#8962;</button>
+            </a>
+            
+            <button id="Btn_Weiter" class="btn">&gtcc;</button>
+            
+        </div>
+        
+        <script>
+            
+            var v_Button_Zurueck = document.getElementById('Btn_Zurueck');
+            var v_Button_Weiter = document.getElementById('Btn_Weiter');
+            var v_myTextBox = document.getElementById('myTextBox');
+            var v_myText = document.getElementById('myText');
+            
+            var v_myFrieder = document.getElementById('myFrieder');
+            
+            var count = 0;
+            var count_max = 2;
+            
+            var opacity_low = 0.2;
+            var opacity_high = 1.0;
+            
+            v_Button_Zurueck.setAttribute("style", "opacity: 0.2");
+            
+            function checkOpacity() {
+   
+                if(count == 1){
+                    v_Button_Zurueck.setAttribute("style", "opacity: 0.2");
+                    v_Button_Weiter.setAttribute("style", "opacity: 1.0");
+                }
+                else if(count == count_max){
+                    v_Button_Zurueck.setAttribute("style", "opacity: 1.0");
+                    v_Button_Weiter.setAttribute("style", "opacity: 0.2");
+                }
+                else{
+                    v_Button_Zurueck.setAttribute("style", "opacity: 1.0");
+                    v_Button_Weiter.setAttribute("style", "opacity: 1.0");
+                }   
+            }
+            
+            v_Button_Zurueck.addEventListener('click', function() {
+                count--
+                
+                if(count == 0){
+                    count = 1;
+                }
+                
+                switch(count){
+                    
+                    case 1:
+                        // Modelle
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Show_Right");
+                        v_myText.setAttribute("visible", true);
+                        v_myText.setAttribute("text", "value: In den Jahren 1861 bis 1937 wurde in Suhl dieses schoene Porzellan hergestellt.");
+                        v_myTextBox.setAttribute("visible", true);
+                        // UI
+                        checkOpacity();
+                        break;
+                        
+                    case 2:
+                        // Modelle
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Show_Left");
+                        v_myText.setAttribute("text", "value: Viele Graveure arbeiteten damals als Porzellananmaler.");
+                        v_Button_Zurueck.setAttribute("style", "opacity: opacity_high");
+                        // UI
+                        checkOpacity();
+                        break;
+                        
+                }    
+            });
+            
+            
+            v_Button_Weiter.addEventListener('click', function() {
+                count++
+                
+                if(count == count_max + 1){
+                    count = count_max;
+                }
+                
+                switch(count){
+                        
+                    case 1:
+                        // Modelle
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Show_Right");
+                        v_myText.setAttribute("visible", true);
+                        v_myText.setAttribute("text", "value: In den Jahren 1861 bis 1937 wurde in Suhl dieses schoene Porzellan hergestellt.");
+                        v_myTextBox.setAttribute("visible", true);
+                        // UI
+                        checkOpacity();
+                        break;
+                        
+                    case 2:
+                        // Modelle
+                        v_myFrieder.setAttribute("animation-mixer", "clip: Show_Left");
+                        v_myText.setAttribute("text", "value: Viele Graveure arbeiteten damals als Porzellananmaler.");
+                        v_Button_Zurueck.setAttribute("style", "opacity: opacity_high");
+                        // UI
+                        checkOpacity();
+                        break;
+                        
+                }
+            });
+
+                         
+        </script>
+        
+    </body>
+</html>
