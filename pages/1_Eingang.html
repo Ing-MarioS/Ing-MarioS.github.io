@@ -1,23 +1,21 @@
 <html>
     <head>
-        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
-        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
-        <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-        <script>screen.orientation.lock('landscape');</script>
         <meta charset="utf-8">
         <title>Waffenmuseum Suhl - AR</title>
         <meta name="viewport" content="width=device-width, initial-scale=0.1">
         <link rel="stylesheet" href="style_pages.css">
         <link rel="manifest" href="manifest.json">
+        <script src="../js_files/aframe.min.js"></script>
+        <script src="../js_files/aframe-ar-nft.js"></script>
+        <script src="../js_files/aframe-look-at-component.min.js"></script>
+        <script src="../js_files/aframe-extras.min.js"></script>
+        <script src="../js_files/aframe-gui.min.js"></script>
+        <script>screen.orientation.lock('landscape');</script>
     </head>
 
     <body>
                      
-        <a-scene style='width:100%;' embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
+        <a-scene embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
             
             <a-light type="ambient" intensity="1.5" color="white"></a-light>
             
@@ -26,15 +24,15 @@
             <a-gltf-model
                 id="myFrieder"
                 position="0 0 0"
-                scale="0.2 0.2 0.2"
+                scale="0.4 0.4 0.4"
                 src="../gltf/low_res/Frieder_Emb_Low_Res.gltf"
-                animation-mixer="clip: NULL; clampWhenFinished: true; loop: once"                
+                animation-mixer="clip: NULL; clampWhenFinished: true; loop: once"
             ></a-gltf-model>
             
             <a-box
                 id="myTextBox"
-                position="0 1.1 0"
-                scale="1.1 0.3 0.05"
+                position="0 2.1 0"
+                scale="1.8 0.3 0.05"
                 color="#000035"
                 visible="false"
             ></a-box>
@@ -42,16 +40,17 @@
             <a-entity
                 id="myText"
                 text="value: Willkommen im Waffenmuseum Suhl; align: center"
-                lineHeight="0.8"
-                position="0 1.1 0.05"
-                width="0.2"
-                height="1"
+                lineHeight="3.0"
+                position="0 2.1 0.06"
+                scale="1.5 1.5 1.0"
+                width="0.4"
+                height="2"
                 visible="false"
             ></a-entity>
             
         </a-scene>
         
-        <div style='position: fixed; bottom: 10px; width: 100%; text-align: center; z-index: 1;'>
+        <div class="btn_box">
             
             <button id="Btn_Zurueck" class="btn">&ltcc;</button>
             

@@ -1,6 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
+/*html, body {
+    width: 100vw;
+    height: 100vh;
+} 
+*/
+
+.btn_box {
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+    z-index: 1;
 }
 
 .btn {
@@ -11,7 +19,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 64px;
     margin: 8px 4px;
+    font-size: 3vw;
 }
 
