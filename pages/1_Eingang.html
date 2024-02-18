@@ -10,12 +10,12 @@
         <script src="../js_files/aframe-look-at-component.min.js"></script>
         <script src="../js_files/aframe-extras.min.js"></script>
         <script src="../js_files/aframe-gui.min.js"></script>
-        <script>screen.orientation.lock('portrait-primary');</script>
+        <script>screen.orientation.lock('landscape');</script>
     </head>
 
     <body>
                      
-        <a-scene embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
+        <a-scene style='width: 100%' embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
             
             <a-light type="ambient" intensity="1.5" color="white"></a-light>
             
