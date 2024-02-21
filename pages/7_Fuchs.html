@@ -32,20 +32,20 @@
             <a-box
                 id="myTextBox"
                 position="0 2.1 0"
-                scale="1.8 0.3 0.05"
+                scale="1.9 0.5 0.05"
                 color="#000035"
                 visible="false"
             ></a-box>
             
             <a-entity
                 id="myText"
-                text="value: Willkommen im Waffenmuseum Suhl; align: center"
-                lineHeight="3.0"
+                text="value: Willkommen im Waffenmuseum Suhl; align: center; width: 1; wrapCount: 30;"
+                lineHeight="4.0"
                 position="0 2.1 0.06"
-                scale="1.5 1.5 1.0"
-                width="0.4"
-                height="2"
+                scale="1.8 1.8 1.0"
+                height="3"
                 visible="false"
+                wrapCount="30"
             ></a-entity>
             
         </a-scene>
@@ -117,7 +117,7 @@
                     case 2:
                         // Modelle
                         v_myFrieder.setAttribute("animation-mixer", "clip: Sit_Welcome");
-                        v_myText.setAttribute("text", "value: Das bekannte Kinderlied 'Fuchs, du hast die Gans gestohlen' verfasste im Jahre 1824 Ernst Anschütz aus Suhl-Goldlauter.");
+                        v_myText.setAttribute("text", "value: Das bekannte Kinderlied 'Fuchs, du hast die Gans gestohlen' verfasste im Jahre 1824 Ernst Anschuetz aus Suhl-Goldlauter.");
                         v_Button_Zurueck.setAttribute("style", "opacity: opacity_high");
                         // UI
                         checkOpacity();
@@ -149,7 +149,7 @@
                     case 2:
                         // Modelle
                         v_myFrieder.setAttribute("animation-mixer", "clip: Sit_Welcome");
-                        v_myText.setAttribute("text", "value: Das bekannte Kinderlied 'Fuchs, du hast die Gans gestohlen' verfasste im Jahre 1824 Ernst Anschütz aus Suhl-Goldlauter.");
+                        v_myText.setAttribute("text", "value: Das bekannte Kinderlied 'Fuchs, du hast die Gans gestohlen' verfasste im Jahre 1824 Ernst Anschuetz aus Suhl-Goldlauter.");
                         v_Button_Zurueck.setAttribute("style", "opacity: opacity_high");
                         // UI
                         checkOpacity();

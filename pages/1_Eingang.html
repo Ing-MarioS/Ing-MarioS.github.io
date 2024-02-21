@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>Waffenmuseum Suhl - AR</title>
-        <meta name="viewport" content="height=device-height, initial-scale=0.1">
+        <meta name="viewport" content="width=device-width, initial-scale=0.1">
         <link rel="stylesheet" href="style_pages.css">
         <link rel="manifest" href="manifest.json">
         <script src="../js_files/aframe.min.js"></script>
@@ -14,7 +14,7 @@
 
     <body>
                      
-        <a-scene style='height: 100%' embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
+        <a-scene style='width: 100%' embedded arjs="trackingMethod: best" renderer="antialias: false; colorManagement: true;" > 
             
             <a-light type="ambient" intensity="1.5" color="white"></a-light>
             
@@ -31,24 +31,24 @@
             <a-box
                 id="myTextBox"
                 position="0 2.1 0"
-                scale="1.8 0.3 0.05"
+                scale="1.9 0.5 0.05"
                 color="#000035"
                 visible="false"
             ></a-box>
             
             <a-entity
                 id="myText"
-                text="value: Willkommen im Waffenmuseum Suhl; align: center"
-                lineHeight="3.0"
+                text="value: Willkommen im Waffenmuseum Suhl; align: center; width: 1; wrapCount: 30;"
+                lineHeight="4.0"
                 position="0 2.1 0.06"
-                scale="1.5 1.5 1.0"
-                width="0.4"
-                height="2"
+                scale="1.8 1.8 1.0"
+                height="3"
                 visible="false"
+                wrapCount="30"
             ></a-entity>
             
         </a-scene>
-        <!--
+        
         <div style='position: fixed; bottom: 10px; width: 100%; text-align: center; z-index: 1;'>
             
             <button id="Btn_Zurueck" class="btn">&ltcc;</button>
@@ -60,7 +60,7 @@
             <button id="Btn_Weiter" class="btn">&gtcc;</button>
             
         </div>
-        -->
+        
         <script>
             
             var v_Button_Zurueck = document.getElementById('Btn_Zurueck');

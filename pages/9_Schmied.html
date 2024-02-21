@@ -24,6 +24,7 @@
             <a-gltf-model
                 id="myFrieder"
                 position="0 0 0"
+                rotation="-90 0 0"
                 scale="0.4 0.4 0.4"
                 src="../gltf/low_res/Frieder_Emb_Low_Res.gltf"
                 animation-mixer="clip: NULL; clampWhenFinished: true; loop: once"
@@ -31,21 +32,23 @@
             
             <a-box
                 id="myTextBox"
-                position="0 2.1 0"
-                scale="1.8 0.3 0.05"
+                position="0 0 -2.2"
+                rotation="-90 0 0"
+                scale="1.9 0.5 0.05"
                 color="#000035"
                 visible="false"
             ></a-box>
             
             <a-entity
                 id="myText"
-                text="value: Willkommen im Waffenmuseum Suhl; align: center"
-                lineHeight="3.0"
-                position="0 2.1 0.06"
-                scale="1.5 1.5 1.0"
-                width="0.4"
-                height="2"
+                text="value: Willkommen im Waffenmuseum Suhl; align: center; width: 1; wrapCount: 35;"
+                lineHeight="4.0"
+                position="0 0.05 -2.2"
+                rotation="-90 0 0"
+                scale="1.8 1.8 1.0"
+                height="3"
                 visible="false"
+                wrapCount="35"
             ></a-entity>
             
         </a-scene>
